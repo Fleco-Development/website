@@ -1,0 +1,56 @@
+---
+title: Duration
+description: Duration object for @fleco/duration
+---
+
+**Type: Class**
+
+Everything in this package is based around the `Duration` class, where you can create a duration and add/subtract time or get the end date in different formats.
+
+## Constructor
+
+```ts
+new Duration('1w 2d');
+//OR
+new Duration({ weeks: 1, days: 2 });
+```
+
+| Parameter | Type                                                                                                                                                        | Optional |
+| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| duration  | [DurationOptions](/packages/duration/duration-options) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | **No**	 |
+
+## Properties
+
+### [.duration](./#duration)
+
+The main duration object.
+
+**Type: [Temporal.Instant](https://tc39.es/proposal-temporal/docs/duration.html)**
+
+## Methods
+
+### [.add(duration)](./#duration)
+
+Adds to the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
+
+| Parameter | Type                                                                                                                                                                   | Optional |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| duration  | [DurationOptions](/packages/duration/interfaces/duration-options) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | **No**	|
+
+**Returns: [Duration](.)**
+
+### [.sub(duration)](./#subduration)
+
+Subtracts from the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
+
+| Parameter | Type                                                                                                                                                                   | Optional |
+| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| duration  | [DurationOptions](/packages/duration/interfaces/duration-options) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | **No**	|
+
+**Returns: [Duration](.)**
+
+### [.endDate()](./#enddate)
+
+Returns the end date as a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object.
+
+**Returns: [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)**

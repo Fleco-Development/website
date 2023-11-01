@@ -3,25 +3,53 @@ import starlight from '@astrojs/starlight';
 
 // https://astro.build/config
 export default defineConfig({
-	integrations: [
-		starlight({
-			title: 'My Docs',
-			social: {
-				github: 'https://github.com/withastro/starlight',
-			},
-			sidebar: [
+	integrations: [starlight({
+		title: 'Fleco',
+		logo: {
+			src: './src/assets/fleco.svg',
+		},
+		customCss: ['./src/assets/custom.css'],
+		social: {
+			github: 'https://github.com/Fleco-Development',
+			discord: 'https://discord.gg/jjytrCZgrE'
+		},
+		sidebar: [{
+			label: 'Fleco',
+			items: [
+				// Each item here is one entry in the navigation menu.
 				{
 					label: 'Guides',
-					items: [
-						// Each item here is one entry in the navigation menu.
-						{ label: 'Example Guide', link: '/guides/example/' },
-					],
+					autogenerate: {
+						directory: 'fleco/guides'
+					}
+				}]
+		}, {
+			label: '@fleco/duration',
+			collapsed: true,
+			items: [
+				{
+					label: 'Getting Started',
+					link: 'packages/duration/get-started'
 				},
 				{
-					label: 'Reference',
-					autogenerate: { directory: 'reference' },
+					label: 'Classes',
+					autogenerate: {
+						directory: 'packages/duration/classes',
+					},
 				},
-			],
-		}),
-	],
+				{
+					label: 'Interfaces',
+					autogenerate: {
+						directory: 'packages/duration/interfaces',
+					},
+				},
+				{
+					label: 'Enums',
+					autogenerate: {
+						directory: 'packages/duration/enums',
+					},
+				}
+			]
+		}]
+	})]
 });

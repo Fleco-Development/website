@@ -1,0 +1,48 @@
+---
+title: Getting Started
+description: Getting started with @fleco/duration
+---
+
+:::danger[Important!]
+	@fleco/duration is **ESM only**. So please make sure you are either using a `.mjs` file extension, or your whole project by setting `"module": true` in your package.json
+:::
+
+@fleco/duration is loosely based on icholy's Duration-js. I have updated the code and have added some functions that are helpful for Fleco.
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+<Tabs>
+	<TabItem label="npm">
+		```bash
+		npm install @fleco/duration
+		```
+	</TabItem>
+	<TabItem label="pnpm">
+		```bash
+		pnpm install @fleco/duration		
+		```
+	</TabItem>
+	<TabItem label="yarn">
+		```bash
+		yarn add @fleco/duration
+		```
+	</TabItem>
+	<TabItem label="bun">
+		```bash
+		bun add @fleco/duration
+		```
+	</TabItem>
+</Tabs>
+
+## Example Program
+
+```ts
+import { Duration, DiscordTimestamp } from '@fleco/duration';
+
+const duration = new Duration('1w 2d');
+
+console.log(duration.endDate()); // Outputs a Date object.
+
+//Discord Timestamps:
+console.log(duration.toDiscordTimestamp(DiscordTimestamp.LongDateTime)); //Outputs <t:[date_in_epoch_sec]:F> for Discord.
+```
