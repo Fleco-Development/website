@@ -7,12 +7,16 @@ import Pagination from "@astrojs/starlight/components/Pagination.astro";
 
 <footer>
 	<Pagination {...Astro.props} />
-	<span class="copyright">© {year} Fleco Development</span>
+	<div class="daisy_alert daisy_footer items-center p-4 copyright">
+		<aside class="items-center grid-flow-col">
+			<img width="36" height="36" src="/fleco.svg" />
+			<p>Copyright © {year} - All rights reserved</p>
+		</aside>
+	</div>
 </footer>
 
 <style>
 	.copyright {
-		font-style: italic;
-		color: var(--sl-color-gray-3);
+		margin-top: 15px;
 	}
 </style>

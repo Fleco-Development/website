@@ -14,10 +14,20 @@ new Duration('1w 2d');
 //OR
 new Duration({ weeks: 1, days: 2 });
 ```
+<div class="grid grid-cols-1 overflow-x-auto p-4 rounded-lg border border-gray-700">
+    <div class="flex daisy_alert text-center items-center font-bold">
+        <span class="w-1/3">Parameter</span>
+        <span class="w-1/3">Type</span>
+        <span class="w-1/3">Optional</span>
+    </div>
 
-| Parameter | Type                                                                                                                                                        | Optional |
-| --------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| duration  | [DurationOptions](/packages/duration/duration-options) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | **No**	 |
+    <div class="flex p-2 text-center items-center">
+        <span class="w-1/3">duration</span>
+        <span class="w-1/3"><a href="/packages/duration/interfaces/duration-options">DurationOptions</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a></span>
+        <span class="w-1/3">No</span>
+    </div>
+
+</div>
 
 ## Properties
 
@@ -33,9 +43,20 @@ The main duration object.
 
 Adds to the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
 
-| Parameter | Type                                                                                                                                                                   | Optional |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| duration  | [DurationOptions](/packages/duration/interfaces/duration-options) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | **No**	|
+<div class="grid grid-cols-1 overflow-x-auto p-4 rounded-lg border border-gray-700">
+    <div class="flex daisy_alert text-center items-center font-bold">
+        <span class="w-1/3">Parameter</span>
+        <span class="w-1/3">Type</span>
+        <span class="w-1/3">Optional</span>
+    </div>
+
+    <div class="flex p-2 text-center items-center">
+        <span class="w-1/3">duration</span>
+        <span class="w-1/3"><a href="/packages/duration/interfaces/duration-options">DurationOptions</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a></span>
+        <span class="w-1/3">No</span>
+    </div>
+
+</div>
 
 **Returns: [Duration](.)**
 
@@ -43,9 +64,20 @@ Adds to the current duration. Can either be a string or [DurationOptions](/packa
 
 Subtracts from the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
 
-| Parameter | Type                                                                                                                                                                   | Optional |
-| --------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| duration  | [DurationOptions](/packages/duration/interfaces/duration-options) \| [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String) | **No**	|
+<div class="grid grid-cols-1 overflow-x-auto p-4 rounded-lg border border-gray-700">
+    <div class="flex daisy_alert text-center items-center font-bold">
+        <span class="w-1/3">Parameter</span>
+        <span class="w-1/3">Type</span>
+        <span class="w-1/3">Optional</span>
+    </div>
+
+    <div class="flex p-2 text-center items-center">
+        <span class="w-1/3">duration</span>
+        <span class="w-1/3"><a href="/packages/duration/interfaces/duration-options">DurationOptions</a> | <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String" target="_blank">String</a></span>
+        <span class="w-1/3">No</span>
+    </div>
+
+</div>
 
 **Returns: [Duration](.)**
 
@@ -59,8 +91,21 @@ Returns the end date as a [Date](https://developer.mozilla.org/en-US/docs/Web/Ja
 
 Returns the end date as a Discord Timestamp string.
 
-| Parameter | Type                                                             | Optional | Default Value |
-| --------- | ---------------------------------------------------------------- | -------- | ------------- |
-| type      |  [DiscordTimestamp?](/packages/duration/enums/discord-timestamp) | **Yes**  | ShortDateTime |
+<div class="grid grid-cols-1 overflow-x-auto p-4 rounded-lg border border-gray-700">
+    <div class="flex daisy_alert text-center items-center font-bold">
+        <span class="w-1/4">Parameter</span>
+        <span class="w-1/4">Type</span>
+        <span class="w-1/4">Optional</span>
+		<span class="w-1/4">Default Value</span>
+    </div>
+
+    <div class="flex p-2 text-center items-center">
+        <span class="w-1/4">duration</span>
+        <span class="w-1/4"><a href="/packages/duration/enums/discord-timestamp">DiscordTimestamp?</a></span>
+        <span class="w-1/4">Yes</span>
+		<span class="w-1/4">ShortDateTime</span>
+    </div>
+
+</div>
 
 **Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)**
