@@ -13,6 +13,9 @@ export default defineConfig({
 			github: 'https://github.com/Fleco-Development',
 			discord: 'https://discord.gg/jjytrCZgrE'
 		},
+		components: {
+			Footer: './src/overrides/Footer.astro',
+		},
 		sidebar: [{
 			label: 'Fleco',
 			items: [

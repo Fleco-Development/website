@@ -1,0 +1,18 @@
+---
+const year = new Date().getFullYear();
+
+import type { Props } from "@astrojs/starlight/props";
+import Pagination from "@astrojs/starlight/components/Pagination.astro";
+---
+
+<footer>
+	<Pagination {...Astro.props} />
+	<span class="copyright">© {year} Fleco Development</span>
+</footer>
+
+<style>
+	.copyright {
+		font-style: italic;
+		color: var(--sl-color-gray-3);
+	}
+</style>
