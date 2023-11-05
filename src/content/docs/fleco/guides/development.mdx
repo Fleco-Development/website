@@ -34,6 +34,37 @@ database:
 
 I have included a script to help setup the db first time for you. You can just run the command below:
 
+<Tabs>
+	<TabItem label="npm">
+
+	```bash
+	npm run db:setup -- --config /path/to/config.yml
+	```
+
+	</TabItem>
+	<TabItem label="pnpm">
+
+	```bash
+	pnpm run db:setup --config /path/to/config.yml
+	```
+
+	</TabItem>
+	<TabItem label="yarn">
+
+	```bash
+	yarn run db:setup --config /path/to/config.yml
+	```
+
+	</TabItem>
+	<TabItem label="bun">
+
+	```bash
+	bun run db:setup -- --config /path/to/config.yml
+	```
+
+	</TabItem>
+</Tabs>
+
 ```bash
 npm run db:setup -- --config /path/to/config.yml
 ```
@@ -43,24 +74,25 @@ npm run db:setup -- --config /path/to/config.yml
 Fleco is desgined to run on both [Bun](https://bun.sh/) and [Node.JS](https://nodejs.org/) runtimes. So there is multiple ways to start the bot:
 
 <Tabs>
-	<TabItem label="Node.JS">
-	
-		<Tabs>
-			<TabItem label="npm">
+	<TabItem label="npm" >
 
-				```bash
-				npm start -- --config /path/to/config.yml
-				```
+		```bash
+		npm start -- --config /path/to/config.yml
+		```
 
-			</TabItem>
-			<TabItem label="pnpm">
+	</TabItem>
+	<TabItem label="pnpm">
 
-				```bash
-				pnpm start --config /path/to/config.yml
-				```
+		```bash
+		pnpm start --config /path/to/config.yml
+		```
 
-			</TabItem>
-		</Tabs>
+	</TabItem>
+	<TabItem label="yarn">
+
+		```bash
+		yarn run start --config /path/to/config.yml
+		```
 
 	</TabItem>
 	<TabItem label="Bun">
