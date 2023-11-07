@@ -13,7 +13,7 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 First, you'll want to clone the repo using Git.
 
-<CodeCopy content="git clone https://github.com/Fleco-Development/fleco.git" />
+<CodeCopy lang="bash" content="git clone https://github.com/Fleco-Development/fleco.git" />
 
 ## Config Setup
 
@@ -36,24 +36,16 @@ I have included a script to help setup the db first time for you. You can just r
 
 <Tabs>
 	<TabItem label="npm">
-
-	<CodeCopy content="npm run db:setup -- --config /path/to/config.yml" />
-	
+		<CodeCopy lang="bash" content="npm run db:setup -- --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="pnpm">
-
-	<CodeCopy content="pnpm run db:setup --config /path/to/config.yml" />
-
+		<CodeCopy lang="bash" content="pnpm run db:setup --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="yarn">
-
-	<CodeCopy content="yarn run db:setup --config /path/to/config.yml" />
-
+		<CodeCopy lang="bash" content="yarn run db:setup --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="bun">
-
-	<CodeCopy content="bun run db:setup -- --config /path/to/config.yml" />
-
+		<CodeCopy lang="bash" content="bun run db:setup -- --config /path/to/config.yml" />
 	</TabItem>
 </Tabs>
 
@@ -63,23 +55,15 @@ Fleco is desgined to run on both [Bun](https://bun.sh/) and [Node.JS](https://no
 
 <Tabs>
 	<TabItem label="npm" >
-
-		<CodeCopy content="npm start -- --config /path/to/config.yml" />
-
+		<CodeCopy lang="bash" content="npm start -- --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="pnpm">
-
-		<CodeCopy content="pnpm start --config /path/to/config.yml" />
-
+		<CodeCopy lang="bash" content="pnpm start --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="yarn">
-
-		<CodeCopy content="yarn run start --config /path/to/config.yml" />
-
+		<CodeCopy lang="bash" content="yarn run start --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="bun">
-
-		<CodeCopy content="bun run start:bun -- --config /path/to/config.yml" />
-
+		<CodeCopy lang="bash" content="bun run start:bun -- --config /path/to/config.yml" />
 	</TabItem>
 </Tabs>

@@ -18,7 +18,7 @@ import "../assets/prism.css";
 	/>
 	<button
 		id="block-copy-button"
-		class="!m-0 p-2 absolute top-0 right-0 daisy_tooltip daisy_tooltip-left cursor-pointer bg-transparent flex-shrink-0 codeblock_copy_button"
+		class="!m-0 p-4 absolute top-0 right-0 daisy_tooltip daisy_tooltip-left cursor-pointer bg-transparent flex-shrink-0 codeblock_copy_button"
 		role="button"
 		data-tip="Copy to Clipboard"
 	>
@@ -26,7 +26,7 @@ import "../assets/prism.css";
 			id="test-2"
 			width="20"
 			height="20"
-			class="transition text-gray-500 group-hover:text-white"
+			class="transition text-gray-500 hover:text-white"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 20 20"
 			fill="currentColor"
@@ -50,6 +50,7 @@ import "../assets/prism.css";
 
 			button?.classList.remove("daisy_tooltip-success");
 			button?.setAttribute("data-tip", "Copy to Clipboard");
+			isCopied = false;
 		}
 	}
 

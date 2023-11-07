@@ -3,15 +3,36 @@ const year = new Date().getFullYear();
 
 import type { Props } from "@astrojs/starlight/props";
 import Pagination from "@astrojs/starlight/components/Pagination.astro";
+import { Icon } from "@astrojs/starlight/components";
+
+import config from "virtual:starlight/user-config";
+
+type Platform = keyof NonNullable<typeof config.social>;
+type SocialConfig = NonNullable<NonNullable<typeof config.social>[Platform]>;
+const links = Object.entries(config.social || {}) as [Platform, SocialConfig][];
 ---
 
 <footer>
 	<Pagination {...Astro.props} />
-	<div class="daisy_alert daisy_footer items-center p-4 copyright shadow-lg">
-		<aside class="items-center grid-flow-col">
+	<div
+		class="rounded-lg bg-gray-800 daisy_footer items-center p-4 copyright shadow-lg flex justify-between"
+	>
+		<aside class="items-center inline-flex flex-start">
 			<img width="36" height="36" src="/fleco.svg" />
 			<p>Copyright © {year} - All rights reserved</p>
 		</aside>
+		{
+			links.length > 0 && (
+				<nav class="flex gap-4 md:place-self-center">
+					{links.map(([platform, { label, url }]) => (
+						<a href={url} rel="me">
+							<span class="sr-only" />
+							<Icon name={platform} />
+						</a>
+					))}
+				</nav>
+			)
+		}
 	</div>
 </footer>
 
