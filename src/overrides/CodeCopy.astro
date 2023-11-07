@@ -10,14 +10,14 @@ import { Prism } from "@astrojs/prism";
 import "../assets/prism.css";
 ---
 
-<div
-	class="overflow-x-none my-3 text-sm flex max-w-fit text-left items-center space-x-4 bg-gray-800 text-white rounded-lg p-4 pl-6 shadow-lg"
+<span
+	class="flex overflow-clip my-3 text-sm max-w-fit text-left items-center bg-gray-800 text-white rounded-lg p-4 shadow-lg"
 >
 	<span class="flex overflow-x-auto gap-4 text-center items-center">
 		<span class="shrink-0 text-gray-500 font-bold">$</span>
 
 		<div
-			class="overflow-x-auto whitespace-nowrap flex-1 font-mono code_content"
+			class="overflow-x-none whitespace-nowrap flex-1 font-mono code_content"
 		>
 			<Prism
 				class="!p-0 code_content relative !border-none !bg-gray-800"
@@ -31,6 +31,7 @@ import "../assets/prism.css";
 		class="daisy_tooltip cursor-pointer bg-transparent flex-shrink-0 code_copy_button"
 		role="button"
 		data-tip="Copy to Clipboard"
+		aria-label="Copy to Clipboard"
 	>
 		<svg
 			id="testing"
@@ -50,7 +51,7 @@ import "../assets/prism.css";
 			</path>
 		</svg>
 	</button>
-</div>
+</span>
 
 <script>
 	let isCopied = false;

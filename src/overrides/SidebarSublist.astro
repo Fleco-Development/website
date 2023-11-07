@@ -1,0 +1,94 @@
+---
+import Badge from "@astrojs/starlight/components/Badge.astro";
+import type { Badge as BadgeType } from "../utils/badge";
+
+interface Link {
+	type: "link";
+	label: string;
+	href: string;
+	isCurrent: boolean;
+	badge: BadgeType | undefined;
+	attrs: any;
+}
+
+interface Group {
+	type: "group";
+	label: string;
+	entries: (Link | Group)[];
+	collapsed: boolean;
+}
+
+type SidebarEntry = Link | Group;
+
+function flattenSidebar(sidebar: SidebarEntry[]): Link[] {
+	return sidebar.flatMap((entry) =>
+		entry.type === "group" ? flattenSidebar(entry.entries) : entry,
+	);
+}
+
+interface Props {
+	sublist: SidebarEntry[];
+	nested?: boolean;
+}
+---
+
+<ul class:list={{ "top-level": !Astro.props.nested }} class="!daisy_menu gap-2">
+	{
+		Astro.props.sublist.map((entry) => (
+			<li>
+				{entry.type === "link" ? (
+					<a
+						href={entry.href}
+						aria-current={entry.isCurrent && "page"}
+						class:list={[
+							{
+								large: !Astro.props.nested,
+								current_page: entry.isCurrent,
+								"text-white": !entry.isCurrent,
+							},
+							entry.attrs.class,
+							"no-underline",
+						]}
+						{...entry.attrs}
+					>
+						<span>{entry.label}</span>
+						{entry.badge && (
+							<>
+								{" "}
+								<Badge
+									text={entry.badge.text}
+									variant={
+										entry.isCurrent
+											? "outline"
+											: entry.badge.variant
+									}
+								/>
+							</>
+						)}
+					</a>
+				) : (
+					<details
+						open={
+							flattenSidebar(entry.entries).some(
+								(i) => i.isCurrent,
+							) || !entry.collapsed
+						}
+					>
+						<summary>
+							<span class="text-md font-bold">{entry.label}</span>
+						</summary>
+						<Astro.self sublist={entry.entries} nested />
+					</details>
+				)}
+			</li>
+		))
+	}
+</ul>
+
+<style>
+	.current_page {
+		color: var(--sl-color-text-invert);
+		background-color: var(--sl-color-text-accent);
+		font-weight: bold;
+	}
+</style>

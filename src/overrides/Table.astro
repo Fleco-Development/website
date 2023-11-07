@@ -26,10 +26,10 @@ marked.use({ renderer });
 
 <div class="overflow-x-auto">
 	<div
-		class="flex flex-col min-w-max xl:min-w-0 p-4 rounded-lg border border-gray-700"
+		class="flex flex-shrink-0 flex-col min-w-max xl:min-w-0 p-4 rounded-lg border border-gray-700"
 	>
 		<div
-			class="flex flex-shrink-0 p-2 rounded-lg bg-gray-800 font-bold text-center"
+			class="flex overflow-x-auto flex-shrink-0 p-2 rounded-lg bg-gray-800 font-bold text-center"
 		>
 			{headers.map((header) => <span class="flex-1 p-2">{header}</span>)}
 		</div>
@@ -40,10 +40,10 @@ marked.use({ renderer });
 
 				return (
 					<>
-						<div class="flex flex-shrink-0 p-2 min-w-max text-center">
+						<div class="flex p-2 min-w-max items-center text-center">
 							{row.map((entry) => (
 								<span
-									class="flex-1"
+									class="flex-1 p-2"
 									set:html={marked.parseInline(entry)}
 								/>
 							))}
