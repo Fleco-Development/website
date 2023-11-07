@@ -11,6 +11,9 @@ dependencies:
   '@astrojs/prefetch':
     specifier: ^0.4.1
     version: 0.4.1
+  '@astrojs/prism':
+    specifier: ^3.0.0
+    version: 3.0.0
   '@astrojs/starlight':
     specifier: ^0.11.2
     version: 0.11.2(astro@3.4.0)
@@ -26,21 +29,18 @@ dependencies:
   astro-compress:
     specifier: ^2.2.3
     version: 2.2.3
-  astro-purgecss:
-    specifier: ^3.2.1
-    version: 3.2.1(astro@3.4.0)(purgecss@5.0.0)
   autoprefixer:
     specifier: ^10.4.16
     version: 10.4.16(postcss@8.4.31)
   daisyui:
     specifier: ^3.9.4
     version: 3.9.4
+  marked:
+    specifier: ^9.1.5
+    version: 9.1.5
   postcss:
     specifier: ^8.4.31
     version: 8.4.31
-  purgecss:
-    specifier: ^5.0.0
-    version: 5.0.0
   sharp:
     specifier: ^0.32.5
     version: 0.32.6
@@ -1345,16 +1345,6 @@ packages:
       typescript-esbuild: 0.3.1
     dev: false
 
-  /astro-purgecss@3.2.1(astro@3.4.0)(purgecss@5.0.0):
-    resolution: {integrity: sha512-dMQJxTkh1MaGRmf2GInQAYIjHKm8qRBbnSCrGoaqeHqG3vTXE+CGPUu0xiDO6kQkQfn+YMoID8sDy3wYgwP87g==}
-    peerDependencies:
-      astro: ^3.0.0
-      purgecss: ^5.0.0
-    dependencies:
-      astro: 3.4.0(typescript@5.2.2)
-      purgecss: 5.0.0
-    dev: false
-
   /astro@3.4.0(typescript@5.2.2):
     resolution: {integrity: sha512-nTOFxrPOnmACl8noTPkRJkaEOMx4wZy4QCLB2aDL3Lm+AiEaVcgH7YQ4GpCl72zSNXp/A7hGdUgcXbC4XYHOCQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
@@ -1754,11 +1744,6 @@ packages:
   /commander@7.2.0:
     resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==}
     engines: {node: '>= 10'}
-    dev: false
-
-  /commander@9.5.0:
-    resolution: {integrity: sha512-KRs7WVDKg86PWiuAqhDrAQnTXZKraVcCc6vFdL14qrZ/DcWwuRo7VoiYXalXO7S5GKpqYiVEwCbgFDfxNHKJBQ==}
-    engines: {node: ^12.20.0 || >=14}
     dev: false
 
   /common-ancestor-path@1.0.1:
@@ -2358,17 +2343,6 @@ packages:
       minimatch: 3.1.2
       once: 1.4.0
       path-is-absolute: 1.0.1
-    dev: false
-
-  /glob@8.1.0:
-    resolution: {integrity: sha512-r8hpEjiQEYlF2QU0df3dS+nxxSIreXQS1qRhMJM0Q5NDdR386C7jb7Hwwod8Fgiuex+k0GFjgft18yvxm5XoCQ==}
-    engines: {node: '>=12'}
-    dependencies:
-      fs.realpath: 1.0.0
-      inflight: 1.0.6
-      inherits: 2.0.4
-      minimatch: 5.1.6
-      once: 1.4.0
     dev: false
 
   /globals@11.12.0:
@@ -3080,6 +3054,12 @@ packages:
     hasBin: true
     dev: false
 
+  /marked@9.1.5:
+    resolution: {integrity: sha512-14QG3shv8Kg/xc0Yh6TNkMj90wXH9mmldi5941I2OevfJ/FQAFLEwtwU2/FfgSAOMlWHrEukWSGQf8MiVYNG2A==}
+    engines: {node: '>= 16'}
+    hasBin: true
+    dev: false
+
   /mdast-util-definitions@5.1.2:
     resolution: {integrity: sha512-8SVPMuHqlPME/z3gqVwWY4zVXn8lqKv/pAhC57FuJ40ImXyBpmO5ukh98zB2v7Blql2FiHjHv9LVztSIqjY+MA==}
     dependencies:
@@ -3726,13 +3706,6 @@ packages:
       brace-expansion: 1.1.11
     dev: false
 
-  /minimatch@5.1.6:
-    resolution: {integrity: sha512-lKwV/1brpG6mBUFHtb7NUmtABCb2WZZmm2wNiOA5hAb8VdCS4B3dtMWyvcoViccwAW/COERjXLt0zP1zXUN26g==}
-    engines: {node: '>=10'}
-    dependencies:
-      brace-expansion: 2.0.1
-    dev: false
-
   /minimatch@9.0.3:
     resolution: {integrity: sha512-RHiac9mvaRw0x3AYRgDC1CxAP7HTcNrrECeA8YYJeWnpo+2Q5CegtZjaotWTWxDG3UeGA1coE05iH1mPjT/2mg==}
     engines: {node: '>=16 || 14 >=14.17'}
@@ -4215,16 +4188,6 @@ packages:
     dependencies:
       end-of-stream: 1.4.4
       once: 1.4.0
-    dev: false
-
-  /purgecss@5.0.0:
-    resolution: {integrity: sha512-RAnuxrGuVyLLTr8uMbKaxDRGWMgK5CCYDfRyUNNcaz5P3kGgD2b7ymQGYEyo2ST7Tl/ScwFgf5l3slKMxHSbrw==}
-    hasBin: true
-    dependencies:
-      commander: 9.5.0
-      glob: 8.1.0
-      postcss: 8.4.31
-      postcss-selector-parser: 6.0.13
     dev: false
 
   /queue-microtask@1.2.3:

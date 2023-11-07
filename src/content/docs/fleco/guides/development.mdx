@@ -6,29 +6,29 @@ title: Development Setup
 Fleco is currently in Development, all of this is bound to change at any moment.
 :::
 
+import CodeCopy from '../../../../overrides/CodeCopy.astro';
+import CodeBlock from '../../../../overrides/CodeBlock.astro';
+
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 First, you'll want to clone the repo using Git.
 
-```bash
-git clone https://github.com/Fleco-Development/fleco.git
-```
+<CodeCopy content="git clone https://github.com/Fleco-Development/fleco.git" />
 
 ## Config Setup
 
-For the config, if you are working in the same directory, I would name the config either `test_config.yml` or `config.yml`, as these are both untracked by git. I would still strongly suggest putting the config file in another directory entirely to avoid uploading your secrets.\
+For the config, if you are working in the same directory, I would name the config either `test_config.yml` or `config.yml`, as these are both untracked by git. I would still strongly suggest putting the config file in another directory entirely to avoid uploading your secrets.
 
 The config template can be found below or in `config_tmpl.yml`
 
-```yaml
-token: <BOT_TOKEN>
+<CodeBlock lang="yaml" code={`token: [BOT_TOKEN]
 database:
-  host: 127.0.0.1
-  user: <user>
-  pass: <pwd>
-  name: fleco
-  port: 5432
-```
+	host: 127.0.0.1	
+	user: [user]
+	pass: [pwd]
+	port: 5432
+`}/>
+
 
 ## Database Setup
 
@@ -37,37 +37,25 @@ I have included a script to help setup the db first time for you. You can just r
 <Tabs>
 	<TabItem label="npm">
 
-	```bash
-	npm run db:setup -- --config /path/to/config.yml
-	```
-
+	<CodeCopy content="npm run db:setup -- --config /path/to/config.yml" />
+	
 	</TabItem>
 	<TabItem label="pnpm">
 
-	```bash
-	pnpm run db:setup --config /path/to/config.yml
-	```
+	<CodeCopy content="pnpm run db:setup --config /path/to/config.yml" />
 
 	</TabItem>
 	<TabItem label="yarn">
 
-	```bash
-	yarn run db:setup --config /path/to/config.yml
-	```
+	<CodeCopy content="yarn run db:setup --config /path/to/config.yml" />
 
 	</TabItem>
 	<TabItem label="bun">
 
-	```bash
-	bun run db:setup -- --config /path/to/config.yml
-	```
+	<CodeCopy content="bun run db:setup -- --config /path/to/config.yml" />
 
 	</TabItem>
 </Tabs>
-
-```bash
-npm run db:setup -- --config /path/to/config.yml
-```
 
 ## Run the bot
 
@@ -76,30 +64,22 @@ Fleco is desgined to run on both [Bun](https://bun.sh/) and [Node.JS](https://no
 <Tabs>
 	<TabItem label="npm" >
 
-		```bash
-		npm start -- --config /path/to/config.yml
-		```
+		<CodeCopy content="npm start -- --config /path/to/config.yml" />
 
 	</TabItem>
 	<TabItem label="pnpm">
 
-		```bash
-		pnpm start --config /path/to/config.yml
-		```
+		<CodeCopy content="pnpm start --config /path/to/config.yml" />
 
 	</TabItem>
 	<TabItem label="yarn">
 
-		```bash
-		yarn run start --config /path/to/config.yml
-		```
+		<CodeCopy content="yarn run start --config /path/to/config.yml" />
 
 	</TabItem>
-	<TabItem label="Bun">
+	<TabItem label="bun">
 
-		```bash
-		bun run start:bun -- --config /path/to/config.yml
-		```
+		<CodeCopy content="bun run start:bun -- --config /path/to/config.yml" />
 
 	</TabItem>
 </Tabs>
