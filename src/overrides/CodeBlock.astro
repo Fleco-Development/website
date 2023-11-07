@@ -1,0 +1,76 @@
+---
+interface Props {
+	lang: string;
+	code: string;
+}
+
+const { lang, code } = Astro.props;
+
+import { Prism } from "@astrojs/prism";
+import "../assets/prism.css";
+---
+
+<div class="relative">
+	<Prism
+		class="code_content relative !border-none !bg-gray-800"
+		lang={lang}
+		code={code}
+	/>
+	<button
+		id="block-copy-button"
+		class="!m-0 p-2 absolute top-0 right-0 daisy_tooltip daisy_tooltip-left cursor-pointer bg-transparent flex-shrink-0 codeblock_copy_button"
+		role="button"
+		data-tip="Copy to Clipboard"
+	>
+		<svg
+			id="test-2"
+			width="20"
+			height="20"
+			class="transition text-gray-500 group-hover:text-white"
+			xmlns="http://www.w3.org/2000/svg"
+			viewBox="0 0 20 20"
+			fill="currentColor"
+			aria-hidden="true"
+			data-tip="Copy to Clipboard"
+		>
+			<path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path>
+			<path
+				d="M3 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v6h-4.586l1.293-1.293a1 1 0 00-1.414-1.414l-3 3a1 1 0 000 1.414l3 3a1 1 0 001.414-1.414L10.414 13H15v3a2 2 0 01-2 2H5a2 2 0 01-2-2V5zM15 11h2a1 1 0 110 2h-2v-2z"
+			></path>
+		</svg>
+	</button>
+</div>
+
+<script>
+	let isCopied = false;
+
+	function handleLeave(e: any) {
+		if (isCopied) {
+			const button = e.target.closest("button");
+
+			button?.classList.remove("daisy_tooltip-success");
+			button?.setAttribute("data-tip", "Copy to Clipboard");
+		}
+	}
+
+	function handleClick(e: any) {
+		const contentElement = e.target
+			.closest("div")
+			.querySelector("pre.code_content code");
+
+		navigator.clipboard.writeText(contentElement!.textContent as string);
+
+		const button = e.target.closest("button");
+		button?.classList.add("daisy_tooltip-success");
+		button?.setAttribute("data-tip", "Copied to Clipboard!");
+
+		isCopied = true;
+	}
+
+	const buttons = document.querySelectorAll("button.codeblock_copy_button");
+
+	buttons.forEach((btn) => {
+		btn.addEventListener("click", handleClick);
+		btn.addEventListener("mouseleave", handleLeave);
+	});
+</script>

@@ -2,8 +2,6 @@ import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import prefetch from '@astrojs/prefetch';
 import Compress from "astro-compress";
-import purgecss from 'astro-purgecss';
-
 import tailwind from "@astrojs/tailwind";
 
 // https://astro.build/config
@@ -55,7 +53,9 @@ export default defineConfig({
 				}
 			}]
 		}]
-	}), tailwind({ applyBaseStyles: false }), prefetch(), purgecss(), Compress({
+	}), tailwind({
+		applyBaseStyles: false
+	}), prefetch(), Compress({
 		SVG: false //This will mess up images if you enable this.
 	})]
 });

@@ -9,40 +9,35 @@ description: Getting started with @fleco/duration
 
 @fleco/duration is loosely based on icholy's Duration-js. I have updated the code and have added some functions that are helpful for Fleco.
 
+import CodeBlock from '../../../../overrides/CodeBlock.astro';
+import CodeCopy from '../../../../overrides/CodeCopy.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <Tabs>
 	<TabItem label="npm">
-		```bash
-		npm install @fleco/duration
-		```
+		<CodeCopy content="npm install @fleco/duration" />
 	</TabItem>
 	<TabItem label="pnpm">
-		```bash
-		pnpm install @fleco/duration		
-		```
+		<CodeCopy content="pnpm install @fleco/duration" />
 	</TabItem>
 	<TabItem label="yarn">
-		```bash
-		yarn add @fleco/duration
-		```
+		<CodeCopy content="yarn add @fleco/duration" />
 	</TabItem>
 	<TabItem label="bun">
-		```bash
-		bun add @fleco/duration
-		```
+		<CodeCopy content="bun add @fleco/duration" />
 	</TabItem>
 </Tabs>
 
 ## Example Program
 
-```ts
-import { Duration, DiscordTimestamp } from '@fleco/duration';
+<CodeBlock
+	lang="typescript"
+	code={`import { Duration, DiscordTimestamp } from '@fleco/duration';
 
 const duration = new Duration('1w 2d');
 
 console.log(duration.endDate()); // Outputs a Date object.
 
 //Discord Timestamps:
-console.log(duration.toDiscordTimestamp(DiscordTimestamp.LongDateTime)); //Outputs <t:[date_in_epoch_sec]:F> for Discord.
-```
+console.log(duration.toDiscordTimestamp(DiscordTimestamp.LongDateTime)); //Outputs <t:[date_in_epoch_sec]:F> for Discord.`}
+/>

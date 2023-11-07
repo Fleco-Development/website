@@ -1,0 +1,57 @@
+---
+import { marked } from "marked";
+interface Props {
+	headers: string[];
+	rows: string[][];
+}
+
+const { headers, rows } = Astro.props;
+
+const renderer = new marked.Renderer();
+
+renderer.link = function (href, title, text) {
+	if (href.startsWith("blank_")) {
+		const actualUrl = href.substring(6, href.length);
+
+		return `<a href="${actualUrl}" title="${
+			title || ""
+		}" target="_blank">${text}</a>`;
+	} else {
+		return `<a href="${href}" title="${title || ""}">${text}</a>`;
+	}
+};
+
+marked.use({ renderer });
+---
+
+<div class="overflow-x-auto">
+	<div
+		class="flex flex-col min-w-max xl:min-w-0 p-4 rounded-lg border border-gray-700"
+	>
+		<div
+			class="flex flex-shrink-0 p-2 rounded-lg bg-gray-800 font-bold text-center"
+		>
+			{headers.map((header) => <span class="flex-1 p-2">{header}</span>)}
+		</div>
+
+		{
+			rows.map((row, index) => {
+				const isLast = index === rows.length - 1;
+
+				return (
+					<>
+						<div class="flex flex-shrink-0 p-2 min-w-max text-center">
+							{row.map((entry) => (
+								<span
+									class="flex-1 p-2"
+									set:html={marked.parseInline(entry)}
+								/>
+							))}
+						</div>
+						{!isLast && <span class="daisy_divider" />}
+					</>
+				);
+			})
+		}
+	</div>
+</div>
