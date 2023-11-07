@@ -18,7 +18,8 @@ export default defineConfig({
 			discord: 'https://discord.gg/jjytrCZgrE'
 		},
 		components: {
-			Footer: './src/overrides/Footer.astro'
+			Footer: './src/overrides/Footer.astro',
+			Sidebar: './src/overrides/Sidebar.astro',
 		},
 		sidebar: [{
 			label: 'Fleco',

@@ -15,19 +15,22 @@ const links = Object.entries(config.social || {}) as [Platform, SocialConfig][];
 <footer>
 	<Pagination {...Astro.props} />
 	<div
-		class="rounded-lg bg-gray-800 daisy_footer items-center p-4 copyright shadow-lg flex justify-between"
+		class="flex justify-between rounded-lg bg-gray-800 daisy_footer items-center p-4 copyright shadow-lg"
 	>
 		<aside class="items-center inline-flex flex-start">
-			<img width="36" height="36" src="/fleco.svg" />
+			<img width="36" height="36" src="/fleco.svg" alt="fleco-logo" />
 			<p>Copyright © {year} - All rights reserved</p>
 		</aside>
 		{
 			links.length > 0 && (
-				<nav class="flex gap-4 md:place-self-center">
+				<nav class="inline-flex gap-4 text-center items-center">
 					{links.map(([platform, { label, url }]) => (
-						<a href={url} rel="me">
-							<span class="sr-only" />
-							<Icon name={platform} />
+						<a href={url} rel="me" class="flex items-center">
+							<span class="sr-only">{label}</span>
+							<Icon
+								class="transition hover:opacity-60 text-xl"
+								name={platform}
+							/>
 						</a>
 					))}
 				</nav>
