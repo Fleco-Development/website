@@ -43,7 +43,7 @@ marked.use({ renderer });
 						<div class="flex flex-shrink-0 p-2 min-w-max text-center">
 							{row.map((entry) => (
 								<span
-									class="flex-1 p-2"
+									class="flex-1"
 									set:html={marked.parseInline(entry)}
 								/>
 							))}

@@ -1,9 +1,13 @@
 ---
 interface Props {
 	content: string;
+	lang?: string;
 }
 
-const { content } = Astro.props;
+const { content, lang } = Astro.props;
+
+import { Prism } from "@astrojs/prism";
+import "../assets/prism.css";
 ---
 
 <div
@@ -15,7 +19,11 @@ const { content } = Astro.props;
 		<div
 			class="overflow-x-auto whitespace-nowrap flex-1 font-mono code_content"
 		>
-			{content}
+			<Prism
+				class="!p-0 code_content relative !border-none !bg-gray-800"
+				lang={lang}
+				code={content}
+			/>
 		</div>
 	</span>
 
@@ -28,7 +36,7 @@ const { content } = Astro.props;
 			id="testing"
 			width="20"
 			height="20"
-			class="transition text-gray-500 group-hover:text-white"
+			class="transition text-gray-500 hover:text-white"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 20 20"
 			fill="currentColor"
@@ -53,6 +61,7 @@ const { content } = Astro.props;
 
 			button?.classList.remove("daisy_tooltip-success");
 			button?.setAttribute("data-tip", "Copy to Clipboard");
+			isCopied = false;
 		}
 	}
 

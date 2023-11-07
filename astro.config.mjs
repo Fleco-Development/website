@@ -28,29 +28,39 @@ export default defineConfig({
 					label: 'Guides',
 					autogenerate: {
 						directory: 'fleco/guides'
-					}
+					},
+					collapsed: true,
 				}]
 		}, {
 			label: '@fleco/duration',
 			collapsed: true,
 			items: [{
 				label: 'Getting Started',
-				link: 'packages/duration/get-started'
+				link: 'packages/duration/get-started',
 			}, {
 				label: 'Classes',
 				autogenerate: {
-					directory: 'packages/duration/classes'
-				}
+					directory: 'packages/duration/classes',
+				},
+				collapsed: true,
 			}, {
 				label: 'Interfaces',
 				autogenerate: {
-					directory: 'packages/duration/interfaces'
-				}
+					directory: 'packages/duration/interfaces',
+				},
+				collapsed: true,
 			}, {
 				label: 'Enums',
 				autogenerate: {
-					directory: 'packages/duration/enums'
-				}
+					directory: 'packages/duration/enums',
+				},
+				collapsed: true,
+			}, {
+				label: 'Examples',
+				autogenerate: {
+					directory: 'packages/duration/examples',
+				},
+				collapsed: true,
 			}]
 		}]
 	}), tailwind({
