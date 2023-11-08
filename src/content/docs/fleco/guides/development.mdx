@@ -9,6 +9,7 @@ Fleco is currently in Development, all of this is bound to change at any moment.
 
 import CodeCopy from '../../../../overrides/CodeCopy.astro';
 import CodeBlock from '../../../../overrides/CodeBlock.astro';
+import InlineCode from '../../../../overrides/InlineCode.astro';
 
 import { Tabs, TabItem } from '@astrojs/starlight/components';
 
@@ -18,17 +19,19 @@ First, you'll want to clone the repo using Git.
 
 ## Config Setup
 
-For the config, if you are working in the same directory, I would name the config either `test_config.yml` or `config.yml`, as these are both untracked by git. I would still strongly suggest putting the config file in another directory entirely to avoid uploading your secrets.
+For the config, if you are working in the same directory, I would name the config either <InlineCode content="test_config.yml" /> or <InlineCode content="config.yml" />, as these are both untracked by git. I would still strongly suggest putting the config file in another directory entirely to avoid uploading your secrets.
 
-The config template can be found below or in `config_tmpl.yml`
+The config template can be found below or in <InlineCode content="config_tmpl.yml" />
 
-<CodeBlock lang="yaml" code={`token: [BOT_TOKEN]
+<CodeBlock lang="yaml" code={
+`token: [BOT_TOKEN]
 database:
 	host: 127.0.0.1	
 	user: [user]
 	pass: [pwd]
 	port: 5432
-`}/>
+`
+}/>
 
 
 ## Database Setup

@@ -12,7 +12,7 @@ import "../assets/prism.css";
 
 <div class="relative">
 	<Prism
-		class="code_content relative !border-none !bg-gray-800"
+		class="code_content relative !border-none !bg-gray-800 shadow-lg"
 		lang={lang}
 		code={code}
 	/>
@@ -24,7 +24,6 @@ import "../assets/prism.css";
 		aria-label="Copy to Clipboard"
 	>
 		<svg
-			id="test-2"
 			width="20"
 			height="20"
 			class="transition text-gray-500 hover:text-white"
@@ -32,7 +31,6 @@ import "../assets/prism.css";
 			viewBox="0 0 20 20"
 			fill="currentColor"
 			aria-hidden="true"
-			data-tip="Copy to Clipboard"
 		>
 			<path d="M8 2a1 1 0 000 2h2a1 1 0 100-2H8z"></path>
 			<path
@@ -45,9 +43,11 @@ import "../assets/prism.css";
 <script>
 	let isCopied = false;
 
-	function handleLeave(e: any) {
+	function handleLeave(e: Event | MouseEvent) {
 		if (isCopied) {
-			const button = e.target.closest("button");
+			const button: HTMLButtonElement | null = (
+				e.target as HTMLElement
+			).closest("button");
 
 			button?.classList.remove("daisy_tooltip-success");
 			button?.setAttribute("data-tip", "Copy to Clipboard");
@@ -55,18 +55,49 @@ import "../assets/prism.css";
 		}
 	}
 
-	function handleClick(e: any) {
-		const contentElement = e.target
-			.closest("div")
+	function handleClick(e: Event | MouseEvent) {
+		const contentElement = (e.target as HTMLElement)
+			.closest("div")!
 			.querySelector("pre.code_content code");
 
 		navigator.clipboard.writeText(contentElement!.textContent as string);
 
-		const button = e.target.closest("button");
+		const button = (e.target as HTMLElement).closest("button");
 		button?.classList.add("daisy_tooltip-success");
 		button?.setAttribute("data-tip", "Copied to Clipboard!");
 
 		isCopied = true;
+	}
+
+	function handleTouch(e: Event) {
+		const evt = e as TouchEvent;
+		e.preventDefault();
+
+		const contentElement = (evt.touches[0].target as HTMLElement)
+			.closest("div")!
+			.querySelector("pre.code_content code");
+
+		navigator.clipboard.writeText(contentElement!.textContent as string);
+
+		const button: HTMLButtonElement | null = (
+			evt.touches[0].target as HTMLElement
+		).closest("button");
+		button?.setAttribute("data-tip", "Copied to Clipboard!");
+		button?.classList.add(
+			"daisy_tooltip",
+			"daisy_tooltip-left",
+			"daisy_tooltip-success",
+			"daisy_tooltip-open",
+		);
+
+		setTimeout(() => {
+			button?.classList.remove(
+				"daisy_tooltip",
+				"daisy_tooltip-left",
+				"daisy_tooltip-success",
+				"daisy_tooltip-open",
+			);
+		}, 2_000);
 	}
 
 	const buttons = document.querySelectorAll("button.codeblock_copy_button");
@@ -74,5 +105,6 @@ import "../assets/prism.css";
 	buttons.forEach((btn) => {
 		btn.addEventListener("click", handleClick);
 		btn.addEventListener("mouseleave", handleLeave);
+		btn.addEventListener("touchstart", handleTouch);
 	});
 </script>
