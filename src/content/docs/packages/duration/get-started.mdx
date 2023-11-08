@@ -3,15 +3,16 @@ title: Getting Started
 description: Getting started with @fleco/duration
 ---
 
-:::danger[Important!]
-	@fleco/duration is **ESM only**. So please make sure you are either using a `.mjs` file extension, or your whole project by setting `"module": true` in your package.json
-:::
-
-@fleco/duration is loosely based on icholy's Duration-js. I have updated the code and have added some functions that are helpful for Fleco.
-
+import InlineCode from '../../../../overrides/InlineCode.astro';
 import CodeBlock from '../../../../overrides/CodeBlock.astro';
 import CodeCopy from '../../../../overrides/CodeCopy.astro';
 import { Tabs, TabItem } from '@astrojs/starlight/components';
+
+:::danger[Important!]
+	@fleco/duration is **ESM only**. So please make sure you are either using a <InlineCode content=".mjs" /> file extension, or your whole project by setting <InlineCode content='"module": true' /> in your package.json
+:::
+
+@fleco/duration is loosely based on icholy's Duration-js. I have updated the code and have added some functions that are helpful for Fleco.
 
 <Tabs>
 	<TabItem label="npm">
@@ -32,12 +33,15 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 <CodeBlock
 	lang="typescript"
-	code={`import { Duration, DiscordTimestamp } from '@fleco/duration';
+	code={
+`import { Duration, DiscordTimestamp } from '@fleco/duration';
 
 const duration = new Duration('1w 2d');
 
 console.log(duration.endDate()); // Outputs a Date object.
 
 //Discord Timestamps:
-console.log(duration.toDiscordTimestamp(DiscordTimestamp.LongDateTime)); //Outputs <t:[date_in_epoch_sec]:F> for Discord.`}
+console.log(duration.toDiscordTimestamp(DiscordTimestamp.LongDateTime)); //Outputs <t:[date_in_epoch_sec]:F> for Discord.
+`
+}
 />

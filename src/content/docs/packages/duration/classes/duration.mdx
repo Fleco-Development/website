@@ -3,20 +3,25 @@ title: Duration
 description: Duration object for @fleco/duration
 ---
 
-Everything in this package is based around the `Duration` class, where you can create a duration and add/subtract time or get the end date in different formats.
+import CodeBlock from '../../../../../overrides/CodeBlock.astro';
+import Table from '../../../../../overrides/Table.astro';
+import InlineCode from '../../../../../overrides/InlineCode.astro';
+
+
+Everything in this package is based around the <InlineCode content="Duration" /> class, where you can create a duration and add/subtract time or get the end date in different formats.
 
 **Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)**
 
 ## Constructor
 
-import CodeBlock from '../../../../../overrides/CodeBlock.astro';
-import Table from '../../../../../overrides/Table.astro';
-
 <CodeBlock 
     lang="typescript"
-    code={`new Duration('1w 2d');
+    code={
+`new Duration('1w 2d');
 //OR
-new Duration({ weeks: 1, days: 2 });`}
+new Duration({ weeks: 1, days: 2 });
+`
+}
 />
 
 <Table 
