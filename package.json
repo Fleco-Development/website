@@ -19,8 +19,9 @@
     "astro-compress": "^2.2.3",
     "autoprefixer": "^10.4.16",
     "daisyui": "^3.9.4",
+    "flex-gap-polyfill": "^4.2.0",
     "marked": "^9.1.5",
-    "postcss": "^8.4.31",
+    "remark-heading-id": "^1.0.1",
     "sharp": "^0.32.5",
     "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
