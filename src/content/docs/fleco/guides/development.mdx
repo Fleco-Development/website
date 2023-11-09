@@ -15,7 +15,10 @@ import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 First, you'll want to clone the repo using Git.
 
-<CodeCopy lang="bash" content="git clone https://github.com/Fleco-Development/fleco.git" />
+<CodeCopy
+	lang="bash"
+	content="git clone https://github.com/Fleco-Development/fleco.git"
+/>
 
 ## Config Setup
 
@@ -23,16 +26,16 @@ For the config, if you are working in the same directory, I would name the confi
 
 The config template can be found below or in <InlineCode content="config_tmpl.yml" />
 
-<CodeBlock lang="yaml" code={
-`token: [BOT_TOKEN]
+<CodeBlock
+	lang="yaml"
+	code={`token: [BOT_TOKEN]
 database:
 	host: 127.0.0.1	
 	user: [user]
 	pass: [pwd]
 	port: 5432
-`
-}/>
-
+`}
+/>
 
 ## Database Setup
 
@@ -40,16 +43,28 @@ I have included a script to help setup the db first time for you. You can just r
 
 <Tabs>
 	<TabItem label="npm">
-		<CodeCopy lang="bash" content="npm run db:setup -- --config /path/to/config.yml" />
+		<CodeCopy
+			lang="bash"
+			content="npm run db:setup -- --config /path/to/config.yml"
+		/>
 	</TabItem>
 	<TabItem label="pnpm">
-		<CodeCopy lang="bash" content="pnpm run db:setup --config /path/to/config.yml" />
+		<CodeCopy
+			lang="bash"
+			content="pnpm run db:setup --config /path/to/config.yml"
+		/>
 	</TabItem>
 	<TabItem label="yarn">
-		<CodeCopy lang="bash" content="yarn run db:setup --config /path/to/config.yml" />
+		<CodeCopy
+			lang="bash"
+			content="yarn run db:setup --config /path/to/config.yml"
+		/>
 	</TabItem>
 	<TabItem label="bun">
-		<CodeCopy lang="bash" content="bun run db:setup -- --config /path/to/config.yml" />
+		<CodeCopy
+			lang="bash"
+			content="bun run db:setup -- --config /path/to/config.yml"
+		/>
 	</TabItem>
 </Tabs>
 
@@ -58,16 +73,22 @@ I have included a script to help setup the db first time for you. You can just r
 Fleco is desgined to run on both [Bun](https://bun.sh/) and [Node.JS](https://nodejs.org/) runtimes. So there is multiple ways to start the bot:
 
 <Tabs>
-	<TabItem label="npm" >
+	<TabItem label="npm">
 		<CodeCopy lang="bash" content="npm start -- --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="pnpm">
 		<CodeCopy lang="bash" content="pnpm start --config /path/to/config.yml" />
 	</TabItem>
 	<TabItem label="yarn">
-		<CodeCopy lang="bash" content="yarn run start --config /path/to/config.yml" />
+		<CodeCopy
+			lang="bash"
+			content="yarn run start --config /path/to/config.yml"
+		/>
 	</TabItem>
 	<TabItem label="bun">
-		<CodeCopy lang="bash" content="bun run start:bun -- --config /path/to/config.yml" />
+		<CodeCopy
+			lang="bash"
+			content="bun run start:bun -- --config /path/to/config.yml"
+		/>
 	</TabItem>
 </Tabs>

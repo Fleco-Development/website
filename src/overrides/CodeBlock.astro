@@ -6,8 +6,8 @@ interface Props {
 
 const { lang, code } = Astro.props;
 
-import { Prism } from "@astrojs/prism";
-import "../assets/prism.css";
+import { Prism } from '@astrojs/prism';
+import '../assets/prism.css';
 ---
 
 <div class="tw-relative">
@@ -17,7 +17,7 @@ import "../assets/prism.css";
 		code={code}
 	/>
 	<button
-		class="!tw-m-0 tw-p-4 tw-absolute tw-top-0 tw-right-0 tw-daisy-tooltip tw-daisy-tooltip-left tw-cursor-pointer tw-bg-transparent tw-flex-shrink-0 codeblock_copy_button"
+		class="codeblock_copy_button tw-daisy-tooltip tw-daisy-tooltip-left tw-absolute tw-right-0 tw-top-0 !tw-m-0 tw-flex-shrink-0 tw-cursor-pointer tw-bg-transparent tw-p-4"
 		role="button"
 		data-tip="Copy to Clipboard"
 		aria-label="Copy to Clipboard"
@@ -25,7 +25,7 @@ import "../assets/prism.css";
 		<svg
 			width="20"
 			height="20"
-			class="tw-transition tw-text-gray-500 hover:tw-text-white"
+			class="tw-text-gray-500 tw-transition hover:tw-text-white"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 20 20"
 			fill="currentColor"
@@ -44,26 +44,24 @@ import "../assets/prism.css";
 
 	function handleLeave(e: Event | MouseEvent) {
 		if (isCopied) {
-			const button: HTMLButtonElement | null = (
-				e.target as HTMLElement
-			).closest("button");
+			const button: HTMLButtonElement | null = (e.target as HTMLElement).closest('button');
 
-			button?.classList.remove("tw-daisy-tooltip-success");
-			button?.setAttribute("data-tip", "Copy to Clipboard");
+			button?.classList.remove('tw-daisy-tooltip-success');
+			button?.setAttribute('data-tip', 'Copy to Clipboard');
 			isCopied = false;
 		}
 	}
 
 	function handleClick(e: Event | MouseEvent) {
 		const contentElement = (e.target as HTMLElement)
-			.closest("div")!
-			.querySelector("pre.code_content code");
+			.closest('div')!
+			.querySelector('pre.code_content code');
 
 		navigator.clipboard.writeText(contentElement!.textContent as string);
 
-		const button = (e.target as HTMLElement).closest("button");
-		button?.classList.add("tw-daisy-tooltip-success");
-		button?.setAttribute("data-tip", "Copied to Clipboard!");
+		const button = (e.target as HTMLElement).closest('button');
+		button?.classList.add('tw-daisy-tooltip-success');
+		button?.setAttribute('data-tip', 'Copied to Clipboard!');
 
 		isCopied = true;
 	}
@@ -73,37 +71,37 @@ import "../assets/prism.css";
 		e.preventDefault();
 
 		const contentElement = (evt.touches[0].target as HTMLElement)
-			.closest("div")!
-			.querySelector("pre.code_content code");
+			.closest('div')!
+			.querySelector('pre.code_content code');
 
 		navigator.clipboard.writeText(contentElement!.textContent as string);
 
-		const button: HTMLButtonElement | null = (
-			evt.touches[0].target as HTMLElement
-		).closest("button");
-		button?.setAttribute("data-tip", "Copied to Clipboard!");
+		const button: HTMLButtonElement | null = (evt.touches[0].target as HTMLElement).closest(
+			'button'
+		);
+		button?.setAttribute('data-tip', 'Copied to Clipboard!');
 		button?.classList.add(
-			"tw-daisy-tooltip",
-			"tw-daisy-tooltip-left",
-			"tw-daisy-tooltip-success",
-			"tw-daisy-tooltip-open",
+			'tw-daisy-tooltip',
+			'tw-daisy-tooltip-left',
+			'tw-daisy-tooltip-success',
+			'tw-daisy-tooltip-open'
 		);
 
 		setTimeout(() => {
 			button?.classList.remove(
-				"tw-daisy-tooltip",
-				"tw-daisy-tooltip-left",
-				"tw-daisy-tooltip-success",
-				"tw-daisy-tooltip-open",
+				'tw-daisy-tooltip',
+				'tw-daisy-tooltip-left',
+				'tw-daisy-tooltip-success',
+				'tw-daisy-tooltip-open'
 			);
 		}, 2_000);
 	}
 
-	const buttons = document.querySelectorAll("button.codeblock_copy_button");
+	const buttons = document.querySelectorAll('button.codeblock_copy_button');
 
 	buttons.forEach((btn) => {
-		btn.addEventListener("click", handleClick);
-		btn.addEventListener("mouseleave", handleLeave);
-		btn.addEventListener("touchstart", handleTouch);
+		btn.addEventListener('click', handleClick);
+		btn.addEventListener('mouseleave', handleLeave);
+		btn.addEventListener('touchstart', handleTouch);
 	});
 </script>

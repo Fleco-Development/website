@@ -1,11 +1,11 @@
 ---
 const year = new Date().getFullYear();
 
-import type { Props } from "@astrojs/starlight/props";
-import Pagination from "@astrojs/starlight/components/Pagination.astro";
-import { Icon } from "@astrojs/starlight/components";
+import type { Props } from '@astrojs/starlight/props';
+import Pagination from '@astrojs/starlight/components/Pagination.astro';
+import { Icon } from '@astrojs/starlight/components';
 
-import config from "virtual:starlight/user-config";
+import config from 'virtual:starlight/user-config';
 
 type Platform = keyof NonNullable<typeof config.social>;
 type SocialConfig = NonNullable<NonNullable<typeof config.social>[Platform]>;
@@ -15,22 +15,19 @@ const links = Object.entries(config.social || {}) as [Platform, SocialConfig][];
 <footer>
 	<Pagination {...Astro.props} />
 	<div
-		class="tw-flex tw-justify-between tw-rounded-lg tw-bg-gray-800 tw-daisy-footer tw-items-center tw-p-4 copyright tw-shadow-lg"
+		class="copyright tw-daisy-footer tw-flex tw-items-center tw-justify-between tw-rounded-lg tw-p-4 tw-shadow-lg"
 	>
-		<aside class="tw-items-center tw-inline-flex tw-flex-start">
+		<aside class="tw-flex-start tw-inline-flex tw-items-center">
 			<img width="36" height="36" src="/fleco.svg" alt="fleco-logo" />
 			<p>Copyright © {year} - All rights reserved</p>
 		</aside>
 		{
 			links.length > 0 && (
-				<nav class="tw-inline-flex tw-gap-4 tw-text-center tw-items-center">
+				<nav class="tw-inline-flex tw-items-center tw-gap-4 tw-text-center">
 					{links.map(([platform, { label, url }]) => (
 						<a href={url} rel="me" class="tw-flex tw-items-center">
 							<span class="sr-only">{label}</span>
-							<Icon
-								class="tw-transition hover:tw-opacity-60 tw-text-xl"
-								name={platform}
-							/>
+							<Icon class="tw-text-xl tw-transition hover:tw-opacity-60" name={platform} />
 						</a>
 					))}
 				</nav>
@@ -40,6 +37,14 @@ const links = Object.entries(config.social || {}) as [Platform, SocialConfig][];
 </footer>
 
 <style>
+	:root[data-theme='light'] .copyright {
+		@apply tw-bg-gray-200;
+	}
+
+	:root[data-theme='dark'] .copyright {
+		@apply tw-bg-gray-800;
+	}
+
 	.copyright {
 		margin-top: 15px;
 	}

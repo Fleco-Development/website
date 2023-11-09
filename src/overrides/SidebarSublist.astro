@@ -1,9 +1,9 @@
 ---
-import Badge from "@astrojs/starlight/components/Badge.astro";
-import type { Badge as BadgeType } from "../utils/badge";
+import Badge from '@astrojs/starlight/components/Badge.astro';
+import type { Badge as BadgeType } from '../utils/badge';
 
 interface Link {
-	type: "link";
+	type: 'link';
 	label: string;
 	href: string;
 	isCurrent: boolean;
@@ -12,7 +12,7 @@ interface Link {
 }
 
 interface Group {
-	type: "group";
+	type: 'group';
 	label: string;
 	entries: (Link | Group)[];
 	collapsed: boolean;
@@ -22,7 +22,7 @@ type SidebarEntry = Link | Group;
 
 function flattenSidebar(sidebar: SidebarEntry[]): Link[] {
 	return sidebar.flatMap((entry) =>
-		entry.type === "group" ? flattenSidebar(entry.entries) : entry,
+		entry.type === 'group' ? flattenSidebar(entry.entries) : entry
 	);
 }
 
@@ -32,26 +32,23 @@ interface Props {
 }
 ---
 
-<ul
-	class:list={{ "top-level": !Astro.props.nested }}
-	class="!tw-daisy-menu tw-gap-2"
->
+<ul class:list={{ 'top-level': !Astro.props.nested }} class="!tw-daisy-menu tw-gap-2">
 	{
 		Astro.props.sublist.map((entry) => (
 			<li>
-				{entry.type === "link" ? (
+				{entry.type === 'link' ? (
 					<a
 						href={entry.href}
-						aria-current={entry.isCurrent && "page"}
+						aria-current={entry.isCurrent && 'page'}
 						class:list={[
+							'link-label',
 							{
 								large: !Astro.props.nested,
 								current_page: entry.isCurrent,
-								"tw-text-white": !entry.isCurrent,
-								"tw-font-bold": entry.isCurrent,
+								'tw-font-bold': entry.isCurrent,
 							},
 							entry.attrs.class,
-							"tw-no-underline",
+							'tw-no-underline',
 						]}
 						{...entry.attrs}
 					>
@@ -61,11 +58,7 @@ interface Props {
 								<>
 									<Badge
 										text={entry.badge.text}
-										variant={
-											entry.isCurrent
-												? "outline"
-												: entry.badge.variant
-										}
+										variant={entry.isCurrent ? 'outline' : entry.badge.variant}
 									/>
 								</>
 							)}
@@ -73,16 +66,10 @@ interface Props {
 					</a>
 				) : (
 					<details
-						open={
-							flattenSidebar(entry.entries).some(
-								(i) => i.isCurrent,
-							) || !entry.collapsed
-						}
+						open={flattenSidebar(entry.entries).some((i) => i.isCurrent) || !entry.collapsed}
 					>
 						<summary>
-							<span class="tw-text-md tw-font-bold">
-								{entry.label}
-							</span>
+							<span class="tw-text-md tw-font-bold">{entry.label}</span>
 						</summary>
 						<Astro.self sublist={entry.entries} nested />
 					</details>
@@ -93,6 +80,9 @@ interface Props {
 </ul>
 
 <style>
+	.link-label {
+		color: var(--sl-color-text);
+	}
 	.current_page {
 		color: var(--sl-color-text-invert);
 		background-color: var(--sl-color-text-accent);
