@@ -45,6 +45,18 @@ const links = Object.entries(config.social || {}) as [Platform, SocialConfig][];
 		@apply tw-bg-gray-800;
 	}
 
+	@media (prefers-color-scheme: dark) {
+		.copyright {
+			@apply tw-bg-gray-200;
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		.copyright {
+			@apply tw-bg-gray-800;
+		}
+	}
+
 	.copyright {
 		margin-top: 15px;
 	}

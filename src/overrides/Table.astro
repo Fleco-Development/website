@@ -59,4 +59,16 @@ marked.use({ renderer });
 	:root[data-theme='dark'] .table-header {
 		@apply tw-text-slate-400;
 	}
+
+	@media (prefers-color-scheme: dark) {
+		.table-header {
+			@apply tw-text-white;
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		.table-header {
+			@apply tw-text-slate-400;
+		}
+	}
 </style>
