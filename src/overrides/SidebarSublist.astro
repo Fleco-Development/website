@@ -32,7 +32,10 @@ interface Props {
 }
 ---
 
-<ul class:list={{ "top-level": !Astro.props.nested }} class="!daisy_menu gap-2">
+<ul
+	class:list={{ "top-level": !Astro.props.nested }}
+	class="!tw-daisy-menu tw-gap-2"
+>
 	{
 		Astro.props.sublist.map((entry) => (
 			<li>
@@ -44,27 +47,29 @@ interface Props {
 							{
 								large: !Astro.props.nested,
 								current_page: entry.isCurrent,
-								"text-white": !entry.isCurrent,
+								"tw-text-white": !entry.isCurrent,
+								"tw-font-bold": entry.isCurrent,
 							},
 							entry.attrs.class,
-							"no-underline",
+							"tw-no-underline",
 						]}
 						{...entry.attrs}
 					>
-						<span>{entry.label}</span>
-						{entry.badge && (
-							<>
-								{" "}
-								<Badge
-									text={entry.badge.text}
-									variant={
-										entry.isCurrent
-											? "outline"
-											: entry.badge.variant
-									}
-								/>
-							</>
-						)}
+						<div class="tw-flex tw-flex-wrap tw-gap-1">
+							<span>{entry.label}</span>
+							{entry.badge && (
+								<>
+									<Badge
+										text={entry.badge.text}
+										variant={
+											entry.isCurrent
+												? "outline"
+												: entry.badge.variant
+										}
+									/>
+								</>
+							)}
+						</div>
 					</a>
 				) : (
 					<details
@@ -75,7 +80,9 @@ interface Props {
 						}
 					>
 						<summary>
-							<span class="text-md font-bold">{entry.label}</span>
+							<span class="tw-text-md tw-font-bold">
+								{entry.label}
+							</span>
 						</summary>
 						<Astro.self sublist={entry.entries} nested />
 					</details>
@@ -89,6 +96,5 @@ interface Props {
 	.current_page {
 		color: var(--sl-color-text-invert);
 		background-color: var(--sl-color-text-accent);
-		font-weight: bold;
 	}
 </style>
