@@ -5,13 +5,13 @@ description: An example of @fleco/duration with Discord.JS
 
 import CodeBlock from '../../../../../overrides/CodeBlock.astro';
 import CodeCopy from '../../../../../overrides/CodeCopy.astro';
-import { Tabs, TabItem } from '@astrojs/starlight/components';	
+import { Tabs, TabItem } from '@astrojs/starlight/components';
 
 This example uses Discord.JS with TypeScript
 
 Package Install:
 
-<CodeCopy lang="bash" content="npm install discord.js @fleco/duration"/>
+<CodeCopy lang="bash" content="npm install discord.js @fleco/duration" />
 
 <CodeBlock
 	lang="typescript"
@@ -21,35 +21,36 @@ import { Duration } from "@fleco/duration";
 import { token } from "./config.json";
 
 const client = new Client({
-	intents: [
-		GatewayIntentBits.Guilds,
-		GatewayIntentBits.GuildModeration,
-		GatewayIntentBits.GuildMembers
-	] 
+intents: [
+GatewayIntentBits.Guilds,
+GatewayIntentBits.GuildModeration,
+GatewayIntentBits.GuildMembers
+]
 });
 
 client.once(Events.ClientReady, (client: Client) => {
-	console.log(\`Logged in as \${client.user.tag}\`)
-	/* ... Command Registration Code ... */
+console.log(\`Logged in as \${client.user.tag}\`)
+/_ ... Command Registration Code ... _/
 });
 
 client.on(Events.InteractionCreate, async (interaction: Interaction) => {
-	if (!interaction.isChatInputCommand()) return;
+if (!interaction.isChatInputCommand()) return;
 
-	if (interaction.commandName === "mute") {
-		const memberFetch = interaction.options.getUser('user', true);
-		const member = await interaction.guild?.members.fetch(memberFetch!.id);
-		const durStr = interaction.options.getString('duration', true);
+    if (interaction.commandName === "mute") {
+    	const memberFetch = interaction.options.getUser('user', true);
+    	const member = await interaction.guild?.members.fetch(memberFetch!.id);
+    	const durStr = interaction.options.getString('duration', true);
 
-		const duration = new Duration(durStr);
+    	const duration = new Duration(durStr);
 
-		await member.timeout(duration.duration.abs().milliseconds, '{INSERT DISCORD MOD COMMENT HERE}');
+    	await member.timeout(duration.duration.abs().milliseconds, '{INSERT DISCORD MOD COMMENT HERE}');
 
-		await interaction.reply(\`Muted <@\${member.id}>\`);
-	}
+    	await interaction.reply(\`Muted <@\${member.id}>\`);
+    }
+
 });
 
 client.login(token);
 `
 }
-/>	
+/>

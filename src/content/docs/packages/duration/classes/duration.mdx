@@ -7,30 +7,29 @@ import CodeBlock from '../../../../../overrides/CodeBlock.astro';
 import Table from '../../../../../overrides/Table.astro';
 import InlineCode from '../../../../../overrides/InlineCode.astro';
 
-
 Everything in this package is based around the <InlineCode content="Duration" /> class, where you can create a duration and add/subtract time or get the end date in different formats.
 
 **Type: [Object](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object)**
 
 ## Constructor
 
-<CodeBlock 
-    lang="typescript"
-    code={
-`new Duration('1w 2d');
+<CodeBlock
+	lang="typescript"
+	code={`new Duration('1w 2d');
 //OR
 new Duration({ weeks: 1, days: 2 });
-`
-}
+`}
 />
 
-<Table 
-    headers={["Parameter", "Type", "Optional"]}
-    rows={
-        [
-            ["duration", "[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)", "No"]
-        ]
-    }
+<Table
+	headers={['Parameter', 'Type', 'Optional']}
+	rows={[
+		[
+			'duration',
+			'[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
+			'No',
+		],
+	]}
 />
 
 ## Properties
@@ -47,13 +46,15 @@ The main duration object.
 
 Adds to the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
 
-<Table 
-    headers={["Parameter", "Type", "Optional"]}
-    rows={
-        [
-            ["duration", "[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)", "No"]
-        ]
-    }
+<Table
+	headers={['Parameter', 'Type', 'Optional']}
+	rows={[
+		[
+			'duration',
+			'[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
+			'No',
+		],
+	]}
 />
 
 **Returns: [Duration](.)**
@@ -64,14 +65,16 @@ Adds to the current duration. Can either be a string or [DurationOptions](/packa
 
 Subtracts from the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
 
-<Table 
-    headers={["Parameter", "Type", "Optional"]}
-    rows={
-        [
-            ["duration", "[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)", "No"]
-        ]
-    }
-/>  
+<Table
+	headers={['Parameter', 'Type', 'Optional']}
+	rows={[
+		[
+			'duration',
+			'[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
+			'No',
+		],
+	]}
+/>{' '}
 
 **Returns: [Duration](.)**
 
@@ -89,13 +92,16 @@ Returns the end date as a [Date](https://developer.mozilla.org/en-US/docs/Web/Ja
 
 Returns the end date as a Discord Timestamp string.
 
-<Table 
-    headers={["Parameter", "Type", "Optional", "Default Value"]}
-    rows={
-        [
-            ["duration", "[DiscordTimestamp](/packages/duration/enums/discord-timestamp)", "No", "ShortDateTime"]
-        ]
-    }
+<Table
+	headers={['Parameter', 'Type', 'Optional', 'Default Value']}
+	rows={[
+		[
+			'duration',
+			'[DiscordTimestamp](/packages/duration/enums/discord-timestamp)',
+			'No',
+			'ShortDateTime',
+		],
+	]}
 />
 
 **Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)**

@@ -6,23 +6,19 @@ interface Props {
 
 const { content, lang } = Astro.props;
 
-import { Prism } from "@astrojs/prism";
-import "../assets/prism.css";
+import { Prism } from '@astrojs/prism';
+import '../assets/prism.css';
 ---
 
 <div
-	class="tw-flex tw-overflow-clip tw-my-3 tw-text-sm tw-max-w-fit tw-text-left tw-items-center tw-bg-gray-800 tw-text-white tw-rounded-lg tw-p-4 tw-shadow-lg"
+	class="tw-my-3 tw-flex tw-max-w-fit tw-items-center tw-overflow-clip tw-rounded-lg tw-bg-gray-800 tw-p-4 tw-text-left tw-text-sm tw-text-white tw-shadow-lg"
 >
-	<span
-		class="tw-flex tw-overflow-x-auto tw-gap-4 tw-text-center tw-items-center"
-	>
-		<span class="tw-shrink-0 tw-text-gray-500 tw-font-bold">$</span>
+	<span class="tw-flex tw-items-center tw-gap-4 tw-overflow-x-auto tw-text-center">
+		<span class="tw-shrink-0 tw-font-bold tw-text-gray-500">$</span>
 
-		<div
-			class="tw-overflow-x-none tw-whitespace-nowrap tw-flex-1 tw-font-mono code_content"
-		>
+		<div class="tw-overflow-x-none code_content tw-flex-1 tw-whitespace-nowrap tw-font-mono">
 			<Prism
-				class="!tw-p-0 code_content tw-relative !tw-border-none !tw-bg-gray-800"
+				class="code_content tw-relative !tw-border-none !tw-bg-gray-800 !tw-p-0"
 				lang={lang}
 				code={content}
 			/>
@@ -30,7 +26,7 @@ import "../assets/prism.css";
 	</span>
 
 	<button
-		class="sm:tw-daisy-tooltip sm:tw-daisy-tooltip-left tw-cursor-pointer tw-bg-transparent tw-flex-shrink-0 code_copy_button"
+		class="code_copy_button tw-flex-shrink-0 tw-cursor-pointer tw-bg-transparent sm:tw-daisy-tooltip sm:tw-daisy-tooltip-left"
 		role="button"
 		data-tip="Copy to Clipboard"
 		aria-label="Copy to Clipboard"
@@ -38,7 +34,7 @@ import "../assets/prism.css";
 		<svg
 			width="20"
 			height="20"
-			class="tw-transition tw-text-gray-500 hover:tw-text-white"
+			class="tw-text-gray-500 tw-transition hover:tw-text-white"
 			xmlns="http://www.w3.org/2000/svg"
 			viewBox="0 0 20 20"
 			fill="currentColor"
@@ -58,28 +54,22 @@ import "../assets/prism.css";
 
 	function handleLeave(e: Event | MouseEvent) {
 		if (isCopied) {
-			const button: HTMLButtonElement | null = (
-				e.target as HTMLElement
-			).closest("button");
+			const button: HTMLButtonElement | null = (e.target as HTMLElement).closest('button');
 
-			button?.classList.remove("md:tw-daisy-tooltip-success");
-			button?.setAttribute("data-tip", "Copy to Clipboard");
+			button?.classList.remove('md:tw-daisy-tooltip-success');
+			button?.setAttribute('data-tip', 'Copy to Clipboard');
 			isCopied = false;
 		}
 	}
 
 	function handleClick(e: Event | MouseEvent) {
-		const contentElement = (e.target as HTMLElement)
-			.closest("div")!
-			.querySelector(".code_content");
+		const contentElement = (e.target as HTMLElement).closest('div')!.querySelector('.code_content');
 
 		navigator.clipboard.writeText(contentElement!.textContent as string);
 
-		const button: HTMLButtonElement | null = (
-			e.target as HTMLElement
-		).closest("button");
-		button?.classList.add("md:tw-daisy-tooltip-success");
-		button?.setAttribute("data-tip", "Copied to Clipboard!");
+		const button: HTMLButtonElement | null = (e.target as HTMLElement).closest('button');
+		button?.classList.add('md:tw-daisy-tooltip-success');
+		button?.setAttribute('data-tip', 'Copied to Clipboard!');
 
 		isCopied = true;
 	}
@@ -89,37 +79,37 @@ import "../assets/prism.css";
 		e.preventDefault();
 
 		const contentElement = (evt.touches[0].target as HTMLElement)
-			.closest("div")!
-			.querySelector(".code_content");
+			.closest('div')!
+			.querySelector('.code_content');
 
 		navigator.clipboard.writeText(contentElement!.textContent as string);
 
-		const button: HTMLButtonElement | null = (
-			evt.touches[0].target as HTMLElement
-		).closest("button");
-		button?.setAttribute("data-tip", "Copied to Clipboard!");
+		const button: HTMLButtonElement | null = (evt.touches[0].target as HTMLElement).closest(
+			'button'
+		);
+		button?.setAttribute('data-tip', 'Copied to Clipboard!');
 		button?.classList.add(
-			"tw-daisy-tooltip",
-			"tw-daisy-tooltip-left",
-			"tw-daisy-tooltip-success",
-			"tw-daisy-tooltip-open",
+			'tw-daisy-tooltip',
+			'tw-daisy-tooltip-left',
+			'tw-daisy-tooltip-success',
+			'tw-daisy-tooltip-open'
 		);
 
 		setTimeout(() => {
 			button?.classList.remove(
-				"tw-daisy-tooltip",
-				"tw-daisy-tooltip-left",
-				"tw-daisy-tooltip-success",
-				"tw-daisy-tooltip-open",
+				'tw-daisy-tooltip',
+				'tw-daisy-tooltip-left',
+				'tw-daisy-tooltip-success',
+				'tw-daisy-tooltip-open'
 			);
 		}, 2_000);
 	}
 
-	const buttons = document.querySelectorAll("button.code_copy_button");
+	const buttons = document.querySelectorAll('button.code_copy_button');
 
 	buttons.forEach((btn) => {
-		btn.addEventListener("click", handleClick);
-		btn.addEventListener("mouseleave", handleLeave);
-		btn.addEventListener("touchstart", handleTouch);
+		btn.addEventListener('click', handleClick);
+		btn.addEventListener('mouseleave', handleLeave);
+		btn.addEventListener('touchstart', handleTouch);
 	});
 </script>

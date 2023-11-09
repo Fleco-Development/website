@@ -1,5 +1,5 @@
 ---
-import { marked } from "marked";
+import { marked } from 'marked';
 interface Props {
 	headers: string[];
 	rows: string[][];
@@ -10,14 +10,12 @@ const { headers, rows } = Astro.props;
 const renderer = new marked.Renderer();
 
 renderer.link = function (href, title, text) {
-	if (href.startsWith("blank_")) {
+	if (href.startsWith('blank_')) {
 		const actualUrl = href.substring(6, href.length);
 
-		return `<a href="${actualUrl}" title="${
-			title || ""
-		}" target="_blank">${text}</a>`;
+		return `<a href="${actualUrl}" title="${title || ''}" target="_blank">${text}</a>`;
 	} else {
-		return `<a href="${href}" title="${title || ""}">${text}</a>`;
+		return `<a href="${href}" title="${title || ''}">${text}</a>`;
 	}
 };
 
@@ -26,16 +24,12 @@ marked.use({ renderer });
 
 <div class="tw-overflow-x-auto">
 	<div
-		class="tw-flex tw-flex-shrink-0 tw-flex-col tw-min-w-max xl:rw-min-w-0 tw-p-4 tw-rounded-lg tw-border tw-border-gray-700"
+		class="xl:rw-min-w-0 tw-flex tw-min-w-max tw-flex-shrink-0 tw-flex-col tw-rounded-lg tw-border tw-border-gray-700 tw-p-4"
 	>
 		<div
-			class="tw-flex tw-overflow-x-auto tw-flex-shrink-0 tw-p-2 tw-rounded-lg tw-bg-gray-800 tw-font-bold tw-text-center"
+			class="tw-flex tw-flex-shrink-0 tw-overflow-x-auto tw-rounded-lg tw-bg-gray-800 tw-p-2 tw-text-center tw-font-bold"
 		>
-			{
-				headers.map((header) => (
-					<span class="tw-flex-1 tw-p-2">{header}</span>
-				))
-			}
+			{headers.map((header) => <span class="table-header tw-flex-1 tw-p-2">{header}</span>)}
 		</div>
 
 		{
@@ -44,12 +38,9 @@ marked.use({ renderer });
 
 				return (
 					<>
-						<div class="tw-flex tw-p-2 tw-min-w-max tw-items-center tw-text-center">
+						<div class="tw-flex tw-min-w-max tw-items-center tw-p-2 tw-text-center">
 							{row.map((entry) => (
-								<span
-									class="tw-flex-1 tw-p-2"
-									set:html={marked.parseInline(entry)}
-								/>
+								<span class="tw-flex-1 tw-p-2" set:html={marked.parseInline(entry)} />
 							))}
 						</div>
 						{!isLast && <span class="tw-daisy-divider" />}
@@ -59,3 +50,25 @@ marked.use({ renderer });
 		}
 	</div>
 </div>
+
+<style>
+	:root[data-theme='light'] .table-header {
+		@apply tw-text-white;
+	}
+
+	:root[data-theme='dark'] .table-header {
+		@apply tw-text-slate-400;
+	}
+
+	@media (prefers-color-scheme: dark) {
+		.table-header {
+			@apply tw-text-white;
+		}
+	}
+
+	@media (prefers-color-scheme: light) {
+		.table-header {
+			@apply tw-text-slate-400;
+		}
+	}
+</style>
