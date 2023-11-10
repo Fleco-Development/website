@@ -25,11 +25,13 @@ marked.use({ renderer });
 <div class="tw-overflow-x-auto">
 	<div
 		class="xl:rw-min-w-0 tw-flex tw-min-w-max tw-flex-shrink-0 tw-flex-col tw-rounded-lg tw-border tw-border-gray-700 tw-p-4"
+		role="table"
 	>
 		<div
 			class="tw-flex tw-flex-shrink-0 tw-overflow-x-auto tw-rounded-lg tw-bg-gray-800 tw-p-2 tw-text-center tw-font-bold"
+			role="rowheader"
 		>
-			{headers.map((header) => <span class="table-header tw-flex-1 tw-p-2">{header}</span>)}
+			{headers.map((header) => <span class="table-header tw-flex-1 tw-p-2" role="cell">{header}</span>)}
 		</div>
 
 		{
@@ -38,9 +40,9 @@ marked.use({ renderer });
 
 				return (
 					<>
-						<div class="tw-flex tw-min-w-max tw-items-center tw-p-2 tw-text-center">
+						<div class="tw-flex tw-min-w-max tw-items-center tw-p-2 tw-text-center" role="row">
 							{row.map((entry) => (
-								<span class="tw-flex-1 tw-p-2" set:html={marked.parseInline(entry)} />
+								<span class="tw-flex-1 tw-p-2" role="cell" set:html={marked.parseInline(entry)} />
 							))}
 						</div>
 						{!isLast && <span class="tw-daisy-divider" />}
@@ -57,7 +59,7 @@ marked.use({ renderer });
 	}
 
 	:root[data-theme='dark'] .table-header {
-		@apply tw-text-slate-400;
+		@apply tw-text-slate-300;
 	}
 
 	@media (prefers-color-scheme: dark) {
