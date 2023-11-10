@@ -3,3 +3,4 @@ declare module 'virtual:starlight/user-config' {
 
 	export default Config;
 }
+	

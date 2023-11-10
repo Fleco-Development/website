@@ -26,9 +26,14 @@ new Duration({ weeks: 1, days: 2 });
 	rows={[
 		[
 			'duration',
-			'[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
+			'[TemporalDuration](/packages/duration/interfaces/temporal-duration) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
 			'No',
 		],
+		[
+			'options',
+			'[DurationOptions?](/packages/duration/interfaces/duration-options)',
+			'Yes',
+		]
 	]}
 />
 
@@ -42,18 +47,23 @@ The main duration object.
 
 ## Methods
 
-### [.add(duration)](./#add) \{#add}
+### [.add(duration, options?)](./#add) \{#add}
 
-Adds to the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
+Adds to the current duration. Can either be a string or [TemporalDuration](/packages/duration/temporal-duration)
 
 <Table
 	headers={['Parameter', 'Type', 'Optional']}
 	rows={[
 		[
 			'duration',
-			'[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
+			'[TemporalDuration](/packages/duration/interfaces/temporal-duration) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
 			'No',
 		],
+		[
+			'options',
+			'[DurationOptions?](/packages/duration/interfaces/duration-options)',
+			'Yes',
+		]
 	]}
 />
 
@@ -61,34 +71,50 @@ Adds to the current duration. Can either be a string or [DurationOptions](/packa
 
 ---
 
-### [.sub(duration)](./#sub) \{#sub}
+### [.sub(duration, options?)](./#sub) \{#sub}
 
-Subtracts from the current duration. Can either be a string or [DurationOptions](/packages/duration/duration-options)
+Subtracts from the current duration. Can either be a string or [TemporalDuration](/packages/duration/temporal-duration)
 
 <Table
 	headers={['Parameter', 'Type', 'Optional']}
 	rows={[
 		[
 			'duration',
-			'[DurationOptions](/packages/duration/interfaces/duration-options) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
+			'[TemporalDuration](/packages/duration/interfaces/temporal-duration) | [String](blank_https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)',
 			'No',
 		],
+		[
+			'options',
+			'[DurationOptions?](/packages/duration/interfaces/duration-options)',
+			'Yes',
+		]
 	]}
-/>{' '}
+/>
 
 **Returns: [Duration](.)**
 
 ---
 
-### [.endDate()](./#endDate) \{#endDate}
+### [.endDate(options?)](./#endDate) \{#endDate}
 
 Returns the end date as a [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) object.
+
+<Table
+	headers={['Parameter', 'Type', 'Optional']}
+	rows={[
+		[
+			'options',
+			'[DurationOptions?](/packages/duration/interfaces/duration-options)',
+			'Yes',
+		]
+	]}
+/>
 
 **Returns: [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date)**
 
 ---
 
-### [.toDiscordTimestamp(type?)](./#toDiscordTimestamp) \{#toDiscordTimestamp}
+### [.toDiscordTimestamp(type, options?)](./#toDiscordTimestamp) \{#toDiscordTimestamp}
 
 Returns the end date as a Discord Timestamp string.
 
@@ -96,12 +122,37 @@ Returns the end date as a Discord Timestamp string.
 	headers={['Parameter', 'Type', 'Optional', 'Default Value']}
 	rows={[
 		[
-			'duration',
+			'type',
 			'[DiscordTimestamp](/packages/duration/enums/discord-timestamp)',
 			'No',
 			'ShortDateTime',
 		],
+		[
+			'options',
+			'[DurationOptions?](/packages/duration/interfaces/duration-options)',
+			'Yes',
+			'null'
+		]
 	]}
+/>
+
+**Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)**
+
+---
+
+### [.toString()](./#toString) \{#toString}
+
+Shows the current duration as a string
+
+Example:
+
+<CodeBlock
+	lang="typescript"
+	code={`import { Duration } from '@fleco/duration';
+const dur = new Duration({ milliseconds: 12389348 });
+
+console.log(dur.toString()); //Output: '3 hours 26 minutes 29 seconds'
+`}
 />
 
 **Returns: [String](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String)**
