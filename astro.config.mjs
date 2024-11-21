@@ -7,7 +7,7 @@ import remarkHeadingId from 'remark-heading-id';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://www.fleco.cloud/',
+	site: 'https://fleco-development.github.io/website/',
 	markdown: {
 		remarkPlugins: [remarkHeadingId],
 	},
